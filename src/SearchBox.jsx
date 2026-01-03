@@ -7,8 +7,8 @@ export default function SearchBox({ updateInfo }) {
     let [city, setCity] = useState("");
     let [err, setErr] = useState(false);
 
-    const API_URL = import.meta.env.API_URL;
-    const API_KEY = import.meta.env.API_KEY;
+    const API_URL = import.meta.env.VITE_API_URL;
+    const API_KEY = import.meta.env.VITE_API_KEY;
 
     let getWeatherInfo = async () => {
         try {
@@ -16,7 +16,6 @@ export default function SearchBox({ updateInfo }) {
                 `${API_URL}?q=${city}&appid=${API_KEY}&units=metric`
             );
             let jsonResponse = await response.json();
-            console.log(jsonResponse);
 
             let results = {
                 city: city,
@@ -25,7 +24,6 @@ export default function SearchBox({ updateInfo }) {
                 humidity: jsonResponse.main.humidity,
                 weather: jsonResponse.weather[0].description,
             };
-            console.log(results);
             return results;
         } catch (err) {
             throw err;
@@ -40,7 +38,6 @@ export default function SearchBox({ updateInfo }) {
     let handleSubmit = async (evt) => {
         try {
             evt.preventDefault();
-            console.log(city);
             setCity("");
             let newInfo = await getWeatherInfo();
             updateInfo(newInfo);
