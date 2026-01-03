@@ -1,0 +1,15 @@
+.SearchBox{
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    margin: 50px 0 50px 0;
+}
+
+.SearchBox form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
